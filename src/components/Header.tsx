@@ -1,5 +1,6 @@
 import { HeaderStyled } from "../styled components/HeaderStyled";
 import logga from "../assets/logga.png";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -8,13 +9,13 @@ export const Header = () => {
       <nav>
         <ul>
           <li>
-            <a href="">HEM</a>
+            <Link to={"/"}>Hem</Link>
           </li>
           <li>
-            <a href="">SPELA</a>
+            <Link to={"/gitgame"}>Spela</Link>
           </li>
           <li>
-            <a href="">OM OSS</a>
+            <Link to={"/aboutus"}>Om oss</Link>
           </li>
         </ul>
       </nav>
