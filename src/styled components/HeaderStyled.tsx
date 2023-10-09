@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+export const HeaderStyled = styled.header`
   display: flex;
   margin: 0;
   background-color: #7a5ba4;

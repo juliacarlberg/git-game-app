@@ -1,9 +1,9 @@
-import logga from "./assets/logga.png";
-import { Header } from "./styled components/Header";
+import { HeaderStyled } from "../styled components/HeaderStyled";
+import logga from "../assets/logga.png";
 
-function App() {
+export const Header = () => {
   return (
-    <Header>
+    <HeaderStyled>
       <img id="logo" src={logga} alt="Logga med vit text Learn Git" />
       <nav>
         <ul>
@@ -18,8 +18,6 @@ function App() {
           </li>
         </ul>
       </nav>
-    </Header>
+    </HeaderStyled>
   );
-}
-
-export default App;
+};
