@@ -6,6 +6,7 @@ import "./index.scss";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { GamePage } from "./pages/GamePage";
 import { Home } from "./pages/Home";
+import { LevelOne } from "./pages/levels/LevelOne";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/aboutus",
     element: <AboutUsPage></AboutUsPage>,
+  },
+  {
+    path: "/level-one",
+    element: <LevelOne></LevelOne>,
   },
 ]);
 
