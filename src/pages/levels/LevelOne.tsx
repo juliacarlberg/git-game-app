@@ -45,6 +45,11 @@ export const LevelOne = () => {
             imageUrl=""
             desc="Record/snapshot file permanently in the version history."
           />
+          <GitCard
+            title="git push"
+            imageUrl=""
+            desc="Send commited changes to your remote repo"
+          />
         </div>
       </div>
     </>
