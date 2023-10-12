@@ -20,4 +20,31 @@
       width: 33%;
     }
   }
+
+  .terminal-container {
+    width: 50%;
+    display: flex;
+
+    div {
+      width: 100%;
+
+      .xterm-screen {
+        width: 100% !important;
+
+        .xterm-cursor-layer,
+        .xterm-text-layer,
+        .xterm-selection-layer,
+        .xterm-link-layer {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  .playable-cards {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
