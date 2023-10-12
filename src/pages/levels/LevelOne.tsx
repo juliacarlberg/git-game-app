@@ -22,13 +22,13 @@ export const LevelOne = () => {
         </div>
         <div className="game">
           <div>
-            <input></input>
+            <hr className="game-input" />
           </div>
           <div>
-            <input></input>
+            <hr className="game-input" />
           </div>
           <div>
-            <input></input>
+            <hr className="game-input" />
           </div>
         </div>
         <div className="terminal-container" id="terminal">
