@@ -1,9 +1,3 @@
-interface IGitCardProps {
-  title: string;
-  imageUrl: string;
-  desc: string;
-}
-
 export const GitCard = (props: IGitCardProps) => {
   return (
     <>

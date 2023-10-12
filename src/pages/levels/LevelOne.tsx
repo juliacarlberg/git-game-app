@@ -40,6 +40,11 @@ export const LevelOne = () => {
             imageUrl=""
             desc="Add file to staged changes"
           />
+          <GitCard
+            title="git commit"
+            imageUrl=""
+            desc="Record/snapshot file permanently in the version history."
+          />
         </div>
       </div>
     </>
