@@ -9,7 +9,15 @@ export const HeaderStyled = styled.header`
   #logo {
     width: 90px;
     margin-right: 50px;
-    padding: 1%;
+    padding: 10%;
+  }
+  #logo:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  nav {
+    position: absolute;
+    right: 15px;
   }
   ul {
     list-style: none;
@@ -17,13 +25,13 @@ export const HeaderStyled = styled.header`
   }
   li {
     padding-right: 50px;
+    cursor: pointer;
   }
-  a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  li:hover {
+    transform: scale(1.2);
+    transition: 0.2s;
+  }
+  .fa-solid {
+    font-size: 30px;
   }
 `;
