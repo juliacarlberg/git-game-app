@@ -1,5 +1,5 @@
 interface IGitCardProps {
   title: string;
-  imageUrl: string;
+  icon: string;
   desc: string;
 }

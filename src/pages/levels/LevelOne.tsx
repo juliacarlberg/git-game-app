@@ -37,17 +37,17 @@ export const LevelOne = () => {
         <div className="playable-cards">
           <GitCard
             title="git add"
-            imageUrl=""
+            icon="file-plus"
             desc="Add file to staged changes"
           />
           <GitCard
             title="git commit"
-            imageUrl=""
+            icon="git-commit"
             desc="Record/snapshot file permanently in the version history."
           />
           <GitCard
             title="git push"
-            imageUrl=""
+            icon="repo-push"
             desc="Send commited changes to your remote repo"
           />
         </div>
