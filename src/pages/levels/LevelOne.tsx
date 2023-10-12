@@ -1,6 +1,16 @@
+import React, { useRef } from "react";
 import { Header } from "../../components/Header";
+import { XTerm } from "xterm-for-react";
+import { GitAdd } from "../../components/Cards/GitAdd";
 
 export const LevelOne = () => {
+  const xtermRef = useRef<any>(null);
+
+  React.useEffect(() => {
+    // You can call any method in XTerm.js by using 'xterm xtermRef.current.terminal.[What you want to call]
+    xtermRef.current.terminal.writeln("Hello, World!");
+  }, []);
+
   return (
     <>
       <Header></Header>
@@ -22,8 +32,12 @@ export const LevelOne = () => {
             <input></input>
           </div>
         </div>
-        <div className="terminal"></div>
-        <div className="playable-cards"></div>
+        <div className="terminal-container" id="terminal">
+          <XTerm ref={xtermRef} />
+        </div>
+        <div className="playable-cards">
+          <GitAdd />
+        </div>
       </div>
     </>
   );
