@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import { Header } from "../../components/Header";
 import { XTerm } from "xterm-for-react";
 import { GitCard } from "../../components/GitCard";
+// @ts-ignore
+import FeatherIcon from "feather-icons-react";
 
 export const LevelOne = () => {
   const xtermRef = useRef<any>(null);
@@ -12,12 +13,17 @@ export const LevelOne = () => {
 
   return (
     <>
-      <Header></Header>
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
             <h1>Level One</h1>
-            <img src="src\assets\person-244.png" />
+            <FeatherIcon icon="user" size="100" color="white" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio sint nemo obcaecati laboriosam ea, ducimus incidunt, et
+              vel in ipsum mollitia est eaque quaerat vitae. Architecto fuga at
+              cupiditate similique.
+            </p>
           </div>
         </div>
         <div className="game">
