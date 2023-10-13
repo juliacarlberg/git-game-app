@@ -51,17 +51,8 @@
 
     div {
       width: 100%;
-
-      .xterm-screen {
-        width: 100% !important;
-
-        .xterm-cursor-layer,
-        .xterm-text-layer,
-        .xterm-selection-layer,
-        .xterm-link-layer {
-          width: 100% !important;
-        }
-      }
+      height: 40vh;
+      border-radius: 0px;
     }
   }
 
