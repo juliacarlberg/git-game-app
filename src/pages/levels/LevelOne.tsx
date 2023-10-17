@@ -6,15 +6,22 @@ import { GitCard } from "../../components/GitCard";
 import FeatherIcon from "feather-icons-react";
 
 export const LevelOne = () => {
+  let firstAnswer = "";
+  let secondAnswer = "";
+  let thirdAnswer = "";
   // const xtermRef = useRef<any>(null);
 
   // React.useEffect(() => {
   //   xtermRef.current.terminal.writeln("Hello, World!");
   // }, []);
 
+  const gitAdd = (): string => {
+    return "added file to staged changes";
+  };
+
   const commands = {
     whoami: "wilma",
-    gitadd: "added file to staged changes",
+    gitadd: gitAdd(),
     gitcommit: "* files changed, 0 insertions(+), 0 deletions(-)",
   };
 
@@ -35,12 +42,15 @@ export const LevelOne = () => {
         </div>
         <div className="game">
           <div>
+            <p>{firstAnswer}</p>
             <hr className="game-input" />
           </div>
           <div>
+            <p>{secondAnswer}</p>
             <hr className="game-input" />
           </div>
           <div>
+            <p>{thirdAnswer}</p>
             <hr className="game-input" />
           </div>
         </div>
@@ -48,10 +58,10 @@ export const LevelOne = () => {
           {/* <XTerm ref={xtermRef} /> */}
           <TerminalContextProvider>
             <ReactTerminal
-              welcomeMessage="C:\Users\user\Documents\git-game-app>"
+              welcomeMessage="C:\Users\user\Documents\git-game-app "
               commands={commands}
               showControlBar={false}
-              theme="matrix"
+              theme="dracula"
             />
           </TerminalContextProvider>
         </div>
