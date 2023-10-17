@@ -1,5 +1,3 @@
-import React, { useRef } from "react";
-import { XTerm } from "xterm-for-react";
 import { ReactTerminal, TerminalContextProvider } from "react-terminal";
 import { GitCard } from "../../components/GitCard";
 // @ts-ignore
@@ -9,6 +7,7 @@ export const LevelOne = () => {
   let firstAnswer = "";
   let secondAnswer = "";
   let thirdAnswer = "";
+
   // const xtermRef = useRef<any>(null);
 
   // React.useEffect(() => {
