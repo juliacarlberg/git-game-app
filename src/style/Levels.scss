@@ -40,6 +40,13 @@
     div {
       width: 30%;
       border-bottom: 1px solid black;
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: center;
+
+      .card {
+        width: 200px;
+      }
     }
   }
 
@@ -53,18 +60,19 @@
     box-sizing: border-box;
 
     input {
-      border: none;
+      border: 1px solid #ffe785;
       outline: none;
       margin: 0;
       padding: 0;
-      background-color: red;
+      background-color: transparent;
       color: white;
       width: 100%;
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .terminal {
       white-space: pre-line;
+      font-size: 1.5em;
     }
   }
 

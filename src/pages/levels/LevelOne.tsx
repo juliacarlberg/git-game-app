@@ -5,7 +5,7 @@ import { useState } from "react";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-const ChildComponent = (props: { key: number; number: number }) => {
+const FirstAnswer = (props: { key: number; number: number }) => {
   return (
     <GitCard
       title="git add"
@@ -15,20 +15,60 @@ const ChildComponent = (props: { key: number; number: number }) => {
   );
 };
 
+const SecondAnswer = (props: { key: number; number: number }) => {
+  return (
+    <GitCard
+      title="git commit"
+      icon="git-commit"
+      desc="Record/snapshot file permanently in the version history."
+    />
+  );
+};
+
+const ThirdAnswer = (props: { key: number; number: number }) => {
+  return (
+    <GitCard
+      title="git push"
+      icon="repo-push"
+      desc="Send commited changes to your remote repo"
+    />
+  );
+};
+
 export const LevelOne = () => {
   const [firstAnswer, setFirstAnswer] = useState(0);
+  const [secondAnswer, setSecondAnswer] = useState(0);
+  const [thirdAnswer, setThirdAnswer] = useState(0);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const answers = [];
+  const answerCards = [];
 
   for (let i = 0; i < firstAnswer; i++) {
-    answers.push(<ChildComponent key={i} number={i} />);
+    answerCards.push(<FirstAnswer key={i} number={i} />);
   }
 
   const gitAdd = (): string => {
     setFirstAnswer((count) => count + 1);
     return "added file to staged changes";
   };
+
+  const gitCommit = (): string => {
+    setSecondAnswer((count) => count + 1);
+    return "files changed";
+  };
+
+  for (let i = 0; i < secondAnswer; i++) {
+    answerCards.push(<SecondAnswer key={i} number={i} />);
+  }
+
+  const gitPush = (): string => {
+    setThirdAnswer((count) => count + 1);
+    return "changes pushed to repository";
+  };
+
+  for (let i = 0; i < thirdAnswer; i++) {
+    answerCards.push(<ThirdAnswer key={i} number={i} />);
+  }
 
   return (
     <>
@@ -46,13 +86,14 @@ export const LevelOne = () => {
           </div>
         </div>
         <div className="game">
-          <div className="answers"> {...answers}</div>
-          <div className="answers"></div>
-          <div className="answers"></div>
+          <div className="answers"> {answerCards[0]}</div>
+          <div className="answers">{answerCards[1]}</div>
+          <div className="answers">{answerCards[2]}</div>
         </div>
         <div className="terminal-container" id="terminal">
           <input
             type="text"
+            placeholder=">>>"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
@@ -62,6 +103,12 @@ export const LevelOne = () => {
                 switch (input) {
                   case "git add":
                     newOutput += gitAdd();
+                    break;
+                  case "git commit":
+                    newOutput += gitCommit();
+                    break;
+                  case "git push":
+                    newOutput += gitPush();
                 }
                 setOutput(newOutput);
                 setInput("");
