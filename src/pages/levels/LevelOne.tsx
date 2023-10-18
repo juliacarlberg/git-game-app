@@ -41,10 +41,28 @@ export const LevelOne = () => {
   const [thirdAnswer, setThirdAnswer] = useState(0);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const answerCards = [];
+  const answers = [];
+  const answerCards = [
+    <GitCard
+      title="git add"
+      icon="file-plus"
+      desc="Add file to staged changes"
+    />,
+    <GitCard
+      title="git commit"
+      icon="git-commit"
+      desc="Record/snapshot file permanently in the version history."
+    />,
+    <GitCard
+      title="git push"
+      icon="repo-push"
+      desc="Send commited changes to your remote repo"
+    />,
+  ];
 
   for (let i = 0; i < firstAnswer; i++) {
-    answerCards.push(<FirstAnswer key={i} number={i} />);
+    answers.push(<FirstAnswer key={i} number={i} />);
+    answerCards.splice(i, 1);
   }
 
   const gitAdd = (): string => {
@@ -58,7 +76,8 @@ export const LevelOne = () => {
   };
 
   for (let i = 0; i < secondAnswer; i++) {
-    answerCards.push(<SecondAnswer key={i} number={i} />);
+    answers.push(<SecondAnswer key={i} number={i} />);
+    answerCards.splice(i, 1);
   }
 
   const gitPush = (): string => {
@@ -67,7 +86,8 @@ export const LevelOne = () => {
   };
 
   for (let i = 0; i < thirdAnswer; i++) {
-    answerCards.push(<ThirdAnswer key={i} number={i} />);
+    answers.push(<ThirdAnswer key={i} number={i} />);
+    answerCards.splice(i, 1);
   }
 
   return (
@@ -86,9 +106,9 @@ export const LevelOne = () => {
           </div>
         </div>
         <div className="game">
-          <div className="answers"> {answerCards[0]}</div>
-          <div className="answers">{answerCards[1]}</div>
-          <div className="answers">{answerCards[2]}</div>
+          <div className="answers"> {answers[0]}</div>
+          <div className="answers">{answers[1]}</div>
+          <div className="answers">{answers[2]}</div>
         </div>
         <div className="terminal-container" id="terminal">
           <input
@@ -117,23 +137,7 @@ export const LevelOne = () => {
           />
           <div className="terminal">{output}</div>
         </div>
-        <div className="playable-cards">
-          <GitCard
-            title="git add"
-            icon="file-plus"
-            desc="Add file to staged changes"
-          />
-          <GitCard
-            title="git commit"
-            icon="git-commit"
-            desc="Record/snapshot file permanently in the version history."
-          />
-          <GitCard
-            title="git push"
-            icon="repo-push"
-            desc="Send commited changes to your remote repo"
-          />
-        </div>
+        <div className="playable-cards">{answerCards}</div>
       </div>
     </>
   );
