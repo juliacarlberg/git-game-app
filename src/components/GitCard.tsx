@@ -1,12 +1,9 @@
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useDrag } from "react-dnd";
+import { ItemTypes } from "../models/ItemTypes";
 
 export const GitCard = (props: IGitCardProps) => {
-  const ItemTypes = {
-    CARD: "card",
-  };
-
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.CARD,
     collect: (monitor) => ({

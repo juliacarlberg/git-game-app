@@ -1,27 +1,33 @@
-import { ReactTerminal, TerminalContextProvider } from "react-terminal";
 import { GitCard } from "../../components/GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
+import { useState } from "react";
+export type Position = [number];
+export type PositionObserver = ((position: Position) => void) | null;
+
+const ChildComponent = (props: { key: number; number: number }) => {
+  return (
+    <GitCard
+      title="git add"
+      icon="file-plus"
+      desc="Add file to staged changes"
+    />
+  );
+};
 
 export const LevelOne = () => {
-  let firstAnswer = "";
-  let secondAnswer = "";
-  let thirdAnswer = "";
+  const [firstAnswer, setFirstAnswer] = useState(0);
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const answers = [];
 
-  // const xtermRef = useRef<any>(null);
-
-  // React.useEffect(() => {
-  //   xtermRef.current.terminal.writeln("Hello, World!");
-  // }, []);
+  for (let i = 0; i < firstAnswer; i++) {
+    answers.push(<ChildComponent key={i} number={i} />);
+  }
 
   const gitAdd = (): string => {
+    setFirstAnswer((count) => count + 1);
     return "added file to staged changes";
-  };
-
-  const commands = {
-    whoami: "wilma",
-    gitadd: gitAdd(),
-    gitcommit: "* files changed, 0 insertions(+), 0 deletions(-)",
   };
 
   return (
@@ -40,29 +46,29 @@ export const LevelOne = () => {
           </div>
         </div>
         <div className="game">
-          <div>
-            <p>{firstAnswer}</p>
-            <hr className="game-input" />
-          </div>
-          <div>
-            <p>{secondAnswer}</p>
-            <hr className="game-input" />
-          </div>
-          <div>
-            <p>{thirdAnswer}</p>
-            <hr className="game-input" />
-          </div>
+          <div className="answers"> {...answers}</div>
+          <div className="answers"></div>
+          <div className="answers"></div>
         </div>
         <div className="terminal-container" id="terminal">
-          {/* <XTerm ref={xtermRef} /> */}
-          <TerminalContextProvider>
-            <ReactTerminal
-              welcomeMessage="C:\Users\user\Documents\git-game-app "
-              commands={commands}
-              showControlBar={false}
-              theme="dracula"
-            />
-          </TerminalContextProvider>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                let newOutput = "";
+                newOutput = output + "\n" + "$ " + input + "\n";
+                switch (input) {
+                  case "git add":
+                    newOutput += gitAdd();
+                }
+                setOutput(newOutput);
+                setInput("");
+              }
+            }}
+          />
+          <div className="terminal">{output}</div>
         </div>
         <div className="playable-cards">
           <GitCard
