@@ -2,6 +2,8 @@ import { GitCard } from "../../components/GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useState } from "react";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../../models/ItemTypes";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
@@ -90,6 +92,16 @@ export const LevelOne = () => {
     answerCards.splice(i, 1);
   }
 
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: ItemTypes.CARD,
+    drop: () => {
+      gitAdd();
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
   return (
     <>
       <div className="game-root">
@@ -106,7 +118,20 @@ export const LevelOne = () => {
           </div>
         </div>
         <div className="game">
-          <div className="answers"> {answers[0]}</div>
+          <div ref={drop} className="answers">
+            {isOver && (
+              <div
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  zIndex: 1,
+                  opacity: 0.5,
+                  backgroundColor: "yellow",
+                }}
+              />
+            )}
+            {answers[0]}
+          </div>
           <div className="answers">{answers[1]}</div>
           <div className="answers">{answers[2]}</div>
         </div>
