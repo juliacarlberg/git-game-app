@@ -5,7 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import "./index.scss";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { GamePage } from "./pages/GamePage";
-import Home from "./pages/Home";
+import { Home } from "./pages/Home";
 
 const router = createBrowserRouter([
   {
