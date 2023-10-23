@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { Header } from "../components/Header";
+import { NewGame } from "../components/NewGame";
 import { ButtonStyled } from "../styled components/ButtonStyled";
 import { HomeWrapper, WrapperStyled } from "../styled components/WrapperStyled";
 
-function Home() {
+export const Home = () => {
+  const [newGame, setNewGame] = useState(false);
+
+  const startNewGame = () => {
+    setNewGame(true);
+  };
   return (
     <>
       <Header></Header>
@@ -15,11 +22,10 @@ function Home() {
             samt terminalen och dess kommandon.
           </p>
           <ButtonStyled>Fortsätt spela</ButtonStyled>
-          <ButtonStyled>Starta nytt spel</ButtonStyled>
+          <ButtonStyled onClick={startNewGame}>Starta nytt spel</ButtonStyled>
+          {newGame ? <NewGame /> : null}
         </HomeWrapper>
       </WrapperStyled>
     </>
   );
-}
-
-export default Home;
+};
