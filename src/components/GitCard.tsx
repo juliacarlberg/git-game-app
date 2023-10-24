@@ -6,6 +6,7 @@ import { ItemTypes } from "../models/ItemTypes";
 export const GitCard = (props: IGitCardProps) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.CARD,
+    item: { title: props.title },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -14,6 +15,7 @@ export const GitCard = (props: IGitCardProps) => {
   return (
     <>
       <div
+        id={props.title}
         className="card"
         ref={drag}
         style={{

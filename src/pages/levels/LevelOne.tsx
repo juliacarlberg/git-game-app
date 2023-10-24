@@ -37,7 +37,7 @@ const ThirdAnswer = (props: { key: number; number: number }) => {
   );
 };
 
-export const LevelOne = () => {
+export const LevelOne = (props: IGitCardProps) => {
   const [firstAnswer, setFirstAnswer] = useState(0);
   const [secondAnswer, setSecondAnswer] = useState(0);
   const [thirdAnswer, setThirdAnswer] = useState(0);
@@ -67,25 +67,27 @@ export const LevelOne = () => {
     answerCards.splice(i, 1);
   }
 
-  const gitAdd = (): string => {
-    setFirstAnswer((count) => count + 1);
-    return "added file to staged changes";
-  };
+  const gitAdd = (command: string): string => {
+    switch (command) {
+      case "git add":
+        setFirstAnswer((count) => count + 1);
+        return "added file to staged changes";
 
-  const gitCommit = (): string => {
-    setSecondAnswer((count) => count + 1);
-    return "files changed";
+      case "git commit":
+        setSecondAnswer((count) => count + 1);
+        return "files changed";
+
+      case "git push":
+        setThirdAnswer((count) => count + 1);
+        return "changes pushed to repository";
+    }
+    return "";
   };
 
   for (let i = 0; i < secondAnswer; i++) {
     answers.push(<SecondAnswer key={i} number={i} />);
     answerCards.splice(i, 1);
   }
-
-  const gitPush = (): string => {
-    setThirdAnswer((count) => count + 1);
-    return "changes pushed to repository";
-  };
 
   for (let i = 0; i < thirdAnswer; i++) {
     answers.push(<ThirdAnswer key={i} number={i} />);
@@ -94,10 +96,11 @@ export const LevelOne = () => {
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.CARD,
-    drop: () => {
-      gitAdd();
+    drop(item: { title: string }, monitor) {
+      gitAdd(item.title);
     },
     collect: (monitor) => ({
+      canDrop: !!monitor.canDrop(),
       isOver: !!monitor.isOver(),
     }),
   }));
@@ -147,13 +150,13 @@ export const LevelOne = () => {
                 newOutput = output + "\n" + "$ " + input + "\n";
                 switch (input) {
                   case "git add":
-                    newOutput += gitAdd();
+                    newOutput += gitAdd("git add");
                     break;
                   case "git commit":
-                    newOutput += gitCommit();
+                    newOutput += gitAdd("git commit");
                     break;
                   case "git push":
-                    newOutput += gitPush();
+                    newOutput += gitAdd("git push");
                 }
                 setOutput(newOutput);
                 setInput("");
