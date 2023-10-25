@@ -7,44 +7,11 @@ import { ItemTypes } from "../../models/ItemTypes";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-const FirstAnswer = (props: { key: number; number: number }) => {
-  return (
-    <GitCard
-      title="git add"
-      icon="file-plus"
-      desc="Add file to staged changes"
-    />
-  );
-};
-
-const SecondAnswer = (props: { key: number; number: number }) => {
-  return (
-    <GitCard
-      title="git commit"
-      icon="git-commit"
-      desc="Record/snapshot file permanently in the version history."
-    />
-  );
-};
-
-const ThirdAnswer = (props: { key: number; number: number }) => {
-  return (
-    <GitCard
-      title="git push"
-      icon="repo-push"
-      desc="Send commited changes to your remote repo"
-    />
-  );
-};
-
-export const LevelOne = (props: IGitCardProps) => {
-  const [firstAnswer, setFirstAnswer] = useState(0);
-  const [secondAnswer, setSecondAnswer] = useState(0);
-  const [thirdAnswer, setThirdAnswer] = useState(0);
+export const LevelOne = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const answers = [];
-  const answerCards = [
+  const [answers, setAnswers] = useState<JSX.Element[]>([]);
+  const [answerCards, setAnswerCards] = useState<JSX.Element[]>([
     <GitCard
       title="git add"
       icon="file-plus"
@@ -60,44 +27,41 @@ export const LevelOne = (props: IGitCardProps) => {
       icon="repo-push"
       desc="Send commited changes to your remote repo"
     />,
-  ];
+  ]);
 
-  for (let i = 0; i < firstAnswer; i++) {
-    answers.push(<FirstAnswer key={i} number={i} />);
-    answerCards.splice(i, 1);
-  }
+  const findCorrectCard = (command: string) => {
+    for (let i = 0; i < answerCards.length; i++) {
+      if (answerCards[i].props.title === command) {
+        let index = answerCards.indexOf(answerCards[i]);
+        answers.push(answerCards[i]);
+        answerCards.splice(index, 1);
+      }
+    }
+  };
 
-  const gitAdd = (command: string): string => {
+  const playersMove = (command: string): string => {
     switch (command) {
       case "git add":
-        setFirstAnswer((count) => count + 1);
+        findCorrectCard(command);
         return "added file to staged changes";
 
       case "git commit":
-        setSecondAnswer((count) => count + 1);
+        findCorrectCard(command);
         return "files changed";
 
       case "git push":
-        setThirdAnswer((count) => count + 1);
+        findCorrectCard(command);
         return "changes pushed to repository";
     }
+    setAnswers([...answers]);
+    setAnswerCards([...answerCards]);
     return "";
   };
 
-  for (let i = 0; i < secondAnswer; i++) {
-    answers.push(<SecondAnswer key={i} number={i} />);
-    answerCards.splice(i, 1);
-  }
-
-  for (let i = 0; i < thirdAnswer; i++) {
-    answers.push(<ThirdAnswer key={i} number={i} />);
-    answerCards.splice(i, 1);
-  }
-
   const [{ isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.CARD,
-    drop(item: { title: string }, monitor) {
-      gitAdd(item.title);
+    drop(item: { title: string }) {
+      playersMove(item.title);
     },
     collect: (monitor) => ({
       canDrop: !!monitor.canDrop(),
@@ -150,13 +114,13 @@ export const LevelOne = (props: IGitCardProps) => {
                 newOutput = output + "\n" + "$ " + input + "\n";
                 switch (input) {
                   case "git add":
-                    newOutput += gitAdd("git add");
+                    newOutput += playersMove("git add");
                     break;
                   case "git commit":
-                    newOutput += gitAdd("git commit");
+                    newOutput += playersMove("git commit");
                     break;
                   case "git push":
-                    newOutput += gitAdd("git push");
+                    newOutput += playersMove("git push");
                 }
                 setOutput(newOutput);
                 setInput("");
