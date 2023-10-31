@@ -13,21 +13,39 @@ export const LevelOne = () => {
   const [answers, setAnswers] = useState<JSX.Element[]>([]);
   const [answerCards, setAnswerCards] = useState<JSX.Element[]>([
     <GitCard
+      key={1}
       title="git add"
       icon="file-plus"
       desc="Add file to staged changes"
     />,
     <GitCard
+      key={2}
       title="git commit"
       icon="git-commit"
       desc="Record/snapshot file permanently in the version history."
     />,
     <GitCard
+      key={3}
       title="git push"
       icon="repo-push"
       desc="Send commited changes to your remote repo"
     />,
   ]);
+
+  function shuffleCards(answerCards: JSX.Element[]) {
+    let currentIndex = answerCards.length,
+      randomIndex;
+    while (currentIndex > 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [answerCards[currentIndex], answerCards[randomIndex]] = [
+        answerCards[randomIndex],
+        answerCards[currentIndex],
+      ];
+    }
+
+    return answerCards;
+  }
 
   const findCorrectCard = (command: string) => {
     for (let i = 0; i < answerCards.length; i++) {
@@ -69,6 +87,8 @@ export const LevelOne = () => {
     }),
   }));
 
+  //shuffleCards(answerCards);
+
   return (
     <>
       <div className="game-root">
@@ -84,21 +104,20 @@ export const LevelOne = () => {
             </p>
           </div>
         </div>
-        <div className="game">
-          <div ref={drop} className="answers">
-            {isOver && (
-              <div
-                style={{
-                  height: "300px",
-                  width: "100%",
-                  zIndex: 1,
-                  opacity: 0.5,
-                  backgroundColor: "yellow",
-                }}
-              />
-            )}
-            {answers[0]}
-          </div>
+        <div ref={drop} className="game">
+          {isOver && (
+            <div
+              style={{
+                boxSizing: "border-box",
+                width: "100%",
+                height: "100%",
+                zIndex: 1,
+                opacity: 0.3,
+                backgroundColor: "yellow",
+              }}
+            />
+          )}
+          <div className="answers">{answers[0]}</div>
           <div className="answers">{answers[1]}</div>
           <div className="answers">{answers[2]}</div>
         </div>
