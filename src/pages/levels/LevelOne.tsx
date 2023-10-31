@@ -4,6 +4,7 @@ import FeatherIcon from "feather-icons-react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../models/ItemTypes";
+import { Header } from "../../components/Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
@@ -91,6 +92,7 @@ export const LevelOne = () => {
 
   return (
     <>
+      <Header></Header>
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
