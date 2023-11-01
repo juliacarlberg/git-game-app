@@ -1,7 +1,7 @@
 import { GitCard } from "../../components/GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../models/ItemTypes";
 import { Header } from "../../components/Header";
@@ -56,15 +56,20 @@ export const LevelOne = () => {
         answerCards.splice(index, 1);
       }
     }
+    setAnswers([...answers]);
+    setAnswerCards([...answerCards]);
   };
 
   const playersMove = (command: string): string => {
+    console.log(command);
     switch (command) {
       case "git add":
+        console.log("add");
         findCorrectCard(command);
         return "added file to staged changes";
 
       case "git commit":
+        console.log("commit");
         findCorrectCard(command);
         return "files changed";
 
@@ -72,8 +77,6 @@ export const LevelOne = () => {
         findCorrectCard(command);
         return "changes pushed to repository";
     }
-    setAnswers([...answers]);
-    setAnswerCards([...answerCards]);
     return "";
   };
 
@@ -88,7 +91,10 @@ export const LevelOne = () => {
     }),
   }));
 
-  //shuffleCards(answerCards);
+  useEffect(() => {
+    let shuffledCards = shuffleCards(answerCards);
+    setAnswerCards([...shuffledCards]);
+  }, []);
 
   return (
     <>
