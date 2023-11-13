@@ -1,10 +1,10 @@
-import { GitCard } from "../../components/GitCard";
+import { GitCard } from "../GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../models/ItemTypes";
-import { Header } from "../../components/Header";
+import { Header } from "../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 

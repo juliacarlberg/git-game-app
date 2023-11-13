@@ -6,7 +6,7 @@ import "./index.scss";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { GamePage } from "./pages/GamePage";
 import { Home } from "./pages/Home";
-import { LevelOne } from "./pages/levels/LevelOne";
+import { LevelOne } from "./components/levels/LevelOne";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
