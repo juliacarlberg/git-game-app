@@ -8,16 +8,16 @@ import { Header } from "../../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-export const Ch1Lvl1 = () => {
+export const Ch3Lvl3 = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [answers, setAnswers] = useState<JSX.Element[]>([]);
   const [answerCards, setAnswerCards] = useState<JSX.Element[]>([
     <GitCard
-      key={1}
-      title="git add"
-      icon="file-plus"
-      desc="Add file to staged changes"
+      key={3}
+      title="git push"
+      icon="repo-push"
+      desc="Send commited changes to your remote repo"
     />,
   ]);
 
@@ -36,10 +36,10 @@ export const Ch1Lvl1 = () => {
   const playersMove = (command: string): string => {
     console.log(command);
     switch (command) {
-      case "git add":
+      case "git push":
+        console.log("commit");
         findCorrectCard(command);
-        console.log("add");
-        return "added file to staged changes";
+        return "changes pushed to repository";
     }
     return "";
   };
@@ -61,16 +61,15 @@ export const Ch1Lvl1 = () => {
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
-            <h1>Nivå 1</h1>
+            <h1>Nivå 3</h1>
             <img
               src="src\assets\char1.png"
               width="200"
               alt="Karaktären Amanda"
             />
             <p>
-              Amanda har nu klonat ner ett repo och skapat ett eget repo. Till
-              hennes egna repo ska hon nu lägga til koden. Först måste filerna
-              inkluderas!
+              Nu är hon redo för sista steget! Ett kort kommando som ser till
+              att koden hamnar i repot.
             </p>
           </div>
         </div>
@@ -100,8 +99,8 @@ export const Ch1Lvl1 = () => {
                 let newOutput = "";
                 newOutput = output + "\n" + "$ " + input + "\n";
                 switch (input) {
-                  case "git add":
-                    newOutput += playersMove("git add");
+                  case "git push":
+                    newOutput += playersMove("git push");
                     break;
                 }
                 setOutput(newOutput);
