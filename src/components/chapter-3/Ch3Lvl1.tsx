@@ -1,10 +1,10 @@
-import { GitCard } from "../../GitCard";
+import { GitCard } from "../GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../models/ItemTypes";
-import { Header } from "../../Header";
+import { ItemTypes } from "../../models/ItemTypes";
+import { Header } from "../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
@@ -17,7 +17,7 @@ export const Ch3Lvl1 = () => {
       key={1}
       title="git add"
       icon="file-plus"
-      desc="Add file to staged changes"
+      desc="Lägg till fil i 'stageade' ändringar"
     />,
   ]);
 
@@ -61,7 +61,7 @@ export const Ch3Lvl1 = () => {
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
-            <h1>Nivå 1</h1>
+            <h1>Kaiptel 3 Nivå 1</h1>
             <img
               src="src\assets\char1.png"
               width="200"

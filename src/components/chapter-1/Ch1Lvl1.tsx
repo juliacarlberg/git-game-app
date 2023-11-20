@@ -1,24 +1,19 @@
-import { GitCard } from "../../GitCard";
+import { GitCard } from "../GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useState } from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypes } from "../../../models/ItemTypes";
-import { Header } from "../../Header";
+import { ItemTypes } from "../../models/ItemTypes";
+import { Header } from "../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-export const Ch3Lvl2 = () => {
+export const Ch1Lvl1 = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [answers, setAnswers] = useState<JSX.Element[]>([]);
   const [answerCards, setAnswerCards] = useState<JSX.Element[]>([
-    <GitCard
-      key={2}
-      title="git commit"
-      icon="git-commit"
-      desc="Record/snapshot file permanently in the version history."
-    />,
+    <GitCard key={1} title="touch" icon="file-plus" desc="Skapa ny fil" />,
   ]);
 
   const findCorrectCard = (command: string) => {
@@ -34,12 +29,10 @@ export const Ch3Lvl2 = () => {
   };
 
   const playersMove = (command: string): string => {
-    console.log(command);
     switch (command) {
-      case "git commit":
-        console.log("commit");
+      case "touch":
         findCorrectCard(command);
-        return "files changed";
+        return "Ny fil skapad";
     }
     return "";
   };
@@ -61,15 +54,17 @@ export const Ch3Lvl2 = () => {
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
-            <h1>Nivå 2</h1>
+            <h1>Kapitel 1 Nivå 1</h1>
             <img
               src="src\assets\char1.png"
               width="200"
               alt="Karaktären Amanda"
             />
             <p>
-              Sedan måste ett såkallat "commit-meddelande" skrivas, för att
-              förklara kortfattat vad hon har lagt till.
+              Det är Amandas första dag på hennes nya LIA-period. Hon ska börja
+              med skapa en fil där hon kan föra anteckningar. Eftersom hon vill
+              bli bäst på att använda terminalen så vill hon göra det via den.
+              Kan du hjälpa henne med det?
             </p>
           </div>
         </div>
@@ -99,8 +94,8 @@ export const Ch3Lvl2 = () => {
                 let newOutput = "";
                 newOutput = output + "\n" + "$ " + input + "\n";
                 switch (input) {
-                  case "git commit":
-                    newOutput += playersMove("git commit");
+                  case "touch":
+                    newOutput += playersMove("touch");
                     break;
                 }
                 setOutput(newOutput);

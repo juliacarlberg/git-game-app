@@ -6,11 +6,11 @@ import "./index.scss";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { GamePage } from "./pages/GamePage";
 import { Home } from "./pages/Home";
-import { Ch3Lvl4 } from "./components/chapter-3/levels/Ch3Lvl4";
+import { Ch3Lvl4 } from "./components/chapter-3/Ch3Lvl4";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Ch3Lvl1 } from "./components/chapter-3/levels/Ch3Lvl1";
-import { Ch3Lvl2 } from "./components/chapter-3/levels/Ch3Lvl2";
+import { Ch3Lvl1 } from "./components/chapter-3/Ch3Lvl1";
+import { Ch3Lvl2 } from "./components/chapter-3/Ch3Lvl2";
 
 const router = createBrowserRouter([
   {
