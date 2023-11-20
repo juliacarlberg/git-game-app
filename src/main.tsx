@@ -6,11 +6,11 @@ import "./index.scss";
 import { AboutUsPage } from "./pages/AboutUsPage";
 import { GamePage } from "./pages/GamePage";
 import { Home } from "./pages/Home";
-import { LevelFour } from "./components/chapter-1/levels/LevelFour";
+import { Ch1Lvl4 } from "./components/chapter-1/levels/Ch1Lvl4";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { LevelOne } from "./components/chapter-1/levels/LevelOne";
-import { LevelTwo } from "./components/chapter-1/levels/LevelTwo";
+import { Ch1Lvl1 } from "./components/chapter-1/levels/Ch1Lvl1";
+import { Ch1Lvl2 } from "./components/chapter-1/levels/Ch1Lvl2";
 
 const router = createBrowserRouter([
   {
@@ -27,15 +27,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/level-one",
-    element: <LevelOne></LevelOne>,
+    element: <Ch1Lvl1></Ch1Lvl1>,
   },
   {
     path: "/level-two",
-    element: <LevelTwo></LevelTwo>,
+    element: <Ch1Lvl2></Ch1Lvl2>,
   },
   {
     path: "/level-four",
-    element: <LevelFour></LevelFour>,
+    element: <Ch1Lvl4></Ch1Lvl4>,
   },
 ]);
 

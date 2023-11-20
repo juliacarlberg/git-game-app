@@ -8,16 +8,16 @@ import { Header } from "../../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-export const LevelOne = () => {
+export const Ch1Lvl2 = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [answers, setAnswers] = useState<JSX.Element[]>([]);
   const [answerCards, setAnswerCards] = useState<JSX.Element[]>([
     <GitCard
-      key={1}
-      title="git add"
-      icon="file-plus"
-      desc="Add file to staged changes"
+      key={2}
+      title="git commit"
+      icon="git-commit"
+      desc="Record/snapshot file permanently in the version history."
     />,
   ]);
 
@@ -36,10 +36,10 @@ export const LevelOne = () => {
   const playersMove = (command: string): string => {
     console.log(command);
     switch (command) {
-      case "git add":
+      case "git commit":
+        console.log("commit");
         findCorrectCard(command);
-        console.log("add");
-        return "added file to staged changes";
+        return "files changed";
     }
     return "";
   };
@@ -61,16 +61,15 @@ export const LevelOne = () => {
       <div className="game-root">
         <div className="level-presentation">
           <div className="character-and-description">
-            <h1>Nivå 1</h1>
+            <h1>Nivå 2</h1>
             <img
               src="src\assets\char1.png"
               width="200"
               alt="Karaktären Amanda"
             />
             <p>
-              Amanda har nu klonat ner ett repo och skapat ett eget repo. Till
-              hennes egna repo ska hon nu lägga til koden. Först måste filerna
-              inkluderas!
+              Sedan måste ett såkallat "commit-meddelande" skrivas, för att
+              förklara kortfattat vad hon har lagt till.
             </p>
           </div>
         </div>
@@ -100,8 +99,8 @@ export const LevelOne = () => {
                 let newOutput = "";
                 newOutput = output + "\n" + "$ " + input + "\n";
                 switch (input) {
-                  case "git add":
-                    newOutput += playersMove("git add");
+                  case "git commit":
+                    newOutput += playersMove("git commit");
                     break;
                 }
                 setOutput(newOutput);
