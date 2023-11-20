@@ -8,7 +8,7 @@ import { Header } from "../Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
 
-export const Ch1Lvl1 = () => {
+export const Ch1Lvl3 = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [answers, setAnswers] = useState<JSX.Element[]>([]);
