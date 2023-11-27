@@ -29,15 +29,10 @@ export const CharacterWrapper = styled.div`
   position: absolute;
   top: 150px;
   left: 30px;
-  h1 {
-    color: black;
-  }
   .character_icon {
     width: 280px;
   }
   p {
     padding: 10%;
-    color: black;
-    font-weight: bold;
   }
 `;

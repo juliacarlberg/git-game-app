@@ -138,6 +138,7 @@ export const LevelOne = () => {
           <div className="answers">{answers[1]}</div>
           <div className="answers">{answers[2]}</div>
         </div>
+        <div className="playable-cards">{answerCards}</div>
         <div className="terminal-container" id="terminal">
           <input
             type="text"
@@ -165,7 +166,6 @@ export const LevelOne = () => {
           />
           <div className="terminal">{output}</div>
         </div>
-        <div className="playable-cards">{answerCards}</div>
       </div>
     </>
   );
