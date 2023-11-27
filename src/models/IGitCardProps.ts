@@ -1,4 +1,4 @@
-interface IGitCardProps {
+export interface IGitCardProps {
   title: string;
   icon: string;
   desc: string;

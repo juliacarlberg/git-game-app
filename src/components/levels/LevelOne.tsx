@@ -1,12 +1,13 @@
-import { GitCard } from "../../components/GitCard";
+import { GitCard } from "../GitCard";
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../models/ItemTypes";
-import { Header } from "../../components/Header";
 export type Position = [number];
 export type PositionObserver = ((position: Position) => void) | null;
+import character from "../../assets/gamecharacter.png";
+import { CharacterWrapper } from "../../styled components/WrapperStyled";
 
 export const LevelOne = () => {
   const [input, setInput] = useState("");
@@ -32,6 +33,8 @@ export const LevelOne = () => {
       desc="Send commited changes to your remote repo"
     />,
   ]);
+
+  const LSUsername = localStorage.getItem("username");
 
   function shuffleCards(answerCards: JSX.Element[]) {
     let currentIndex = answerCards.length,
@@ -98,19 +101,25 @@ export const LevelOne = () => {
 
   return (
     <>
-      <Header></Header>
       <div className="game-root">
         <div className="level-presentation">
-          <div className="character-and-description">
-            <h1>Level One</h1>
-            <FeatherIcon icon="user" size="100" color="white" />
+          <CharacterWrapper>
+            <h1>Level 1</h1>
+            <img
+              className="character_icon"
+              src={character}
+              alt="Illustration på en ung kvinna med glasögon"
+            />
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Distinctio sint nemo obcaecati laboriosam ea, ducimus incidunt, et
-              vel in ipsum mollitia est eaque quaerat vitae. Architecto fuga at
-              cupiditate similique.
+              Hej {LSUsername}! Jag är ute på min LIA och ska göra min första
+              git commit, kan du hjälpa mig med vilka steg jag ska göra och i
+              vilken ordning?
+              <br />
+              <br />
+              Dra korten till rätt plats i rätt ordning eller skriv i
+              terminalen.
             </p>
-          </div>
+          </CharacterWrapper>
         </div>
         <div ref={drop} className="game">
           {isOver && (

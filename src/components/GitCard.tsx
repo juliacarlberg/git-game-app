@@ -1,6 +1,7 @@
 // @ts-ignore
 import FeatherIcon from "feather-icons-react";
 import { useDrag } from "react-dnd";
+import { IGitCardProps } from "../models/IGitCardProps";
 import { ItemTypes } from "../models/ItemTypes";
 
 export const GitCard = (props: IGitCardProps) => {
