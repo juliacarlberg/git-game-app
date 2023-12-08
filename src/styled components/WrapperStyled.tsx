@@ -17,3 +17,22 @@ export const HomeWrapper = styled.div`
   align-items: center;
   background-color: #7a5ba4;
 `;
+
+export const CharacterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c06ca2;
+  border-radius: 20px;
+  width: 280px;
+  position: absolute;
+  top: 150px;
+  left: 30px;
+  .character_icon {
+    width: 280px;
+  }
+  p {
+    padding: 10%;
+  }
+`;

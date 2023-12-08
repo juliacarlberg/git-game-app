@@ -1,10 +1,13 @@
 import { Header } from "../components/Header";
+import { LevelOne } from "../components/levels/LevelOne";
 
 export const GamePage = () => {
+  // const users = useContext(UserContext);
+
   return (
     <>
       <Header></Header>
-      <h2>Börja spela</h2>
+      <LevelOne></LevelOne>
     </>
   );
 };

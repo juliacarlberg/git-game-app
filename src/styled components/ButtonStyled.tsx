@@ -11,8 +11,12 @@ export const ButtonStyled = styled.button`
   border: 5px solid #ffc0e9;
   border-radius: 30px;
   cursor: pointer;
-  :hover {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  /* :hover {
     background-color: #ffc0e9;
     border: 5px solid #c06ca2;
-  }
+  } */
 `;

@@ -5,7 +5,6 @@ export const HeaderStyled = styled.header`
   margin: 0;
   background-color: #7a5ba4;
   align-items: center;
-  width: 100vw;
   #logo {
     width: 90px;
     margin-right: 50px;
